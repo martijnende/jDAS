@@ -32,7 +32,7 @@ The example below is taken from a submarine DAS experiment conducted offshore Gr
 
 .. image:: img/jDAS_example.jpg
 
-Note that some aliasing artefacts have been introduced in rendering this static JPEG. A code example to reproduce this figure is included in the ``examples`` directory of the project.
+Note that some aliasing artifacts have been introduced in rendering this static JPEG. A code example to reproduce this figure is included in the ``examples`` directory of the project.
 
 
 
@@ -43,8 +43,8 @@ Contents
     :maxdepth: 2
     
     installation.rst
-    training.rst
     inference.rst
+    training.rst
     details.rst
     resources.rst
     license.rst
