@@ -13,14 +13,15 @@
 
 Retraining the model on new data is quick and easy, and will produce an optimal separation between coherent signals and incoherent noise for your specific dataset::
     
-    import JDAS
-    data_loader = JDAS.DataLoader(data)
-    model = JDAS.loadmodel("models/pretrained.h5")
+    from jDAS import JDAS
+    jdas = JDAS()
+    data_loader = jdas.init_dataloader(data)
+    model = jdas.load_model()
     model.fit(data_loader, epochs=50)
     
 Denoising your data is then done through a single function call::
 
-    clean_data = JDAS.denoise(data)
+    clean_data = jdas.denoise(data)
     
 That's all!
 

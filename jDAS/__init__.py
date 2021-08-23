@@ -4,6 +4,8 @@ import keras
 import numpy as np
 
 from .filters import taper_filter
+from .dataloader import DataLoader
+from .callbacks import tensorboard, checkpoint
 
 # from ..models.jDAS_arch import CallBacks, DataGenerator, UNet
 
@@ -20,7 +22,8 @@ class JDAS:
     
     def __init__(self):
         self.taper_filter = taper_filter
-#         self.DataLoader = DataGenerator
+        self.callback_tensorboard = tensorboard
+        self.callback_checkpoint = checkpoint
         pass
     
     
@@ -30,6 +33,11 @@ class JDAS:
             
         self.model = keras.models.load_model(model_path)
         return self.model
+    
+    
+    def init_dataloader(self, data, batch_size=16, batch_multiplier=10):
+        dataloader = DataLoader(data, batch_size=batch_size, batch_multiplier=batch_multiplier)
+        return dataloader
     
     
     @staticmethod
@@ -81,7 +89,7 @@ class JDAS:
         return rec
 
 
-    def denoise(self, data, Nt=2048, Nsub=11, postfilter=False, filter_band=(1, 10, 50.), verbose=True):
+    def denoise(self, data, postfilter=False, filter_band=(1, 10, 50), verbose=True):
         """Filter data with a J-invariant model
 
         This function automatically splits the input `data` into suitable samples to feed into the J-invariant model for filtering.
@@ -91,10 +99,6 @@ class JDAS:
 
         data : `numpy.array`
             DAS data
-        Nt : int, default 2048
-            Number of time samples per channel
-        Nsub : int, default 11
-            Number of DAS channels to be combined into one model input sample
         postfilter : bool, default False
             Whether or not to bandpass filter after J-invariant denoising
         filter_band : tuple
@@ -118,6 +122,8 @@ class JDAS:
             return None
 
         Nch, Nt_tot = data.shape
+        Nsub = 11
+        Nt = 2048
         Nsamples = Nt_tot // Nt
         
         if Nch < Nsub:

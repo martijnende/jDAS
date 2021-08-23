@@ -4,8 +4,8 @@
 
 --------------
 
-Contents: [overview](#overview) | [example](#example) | [quickstart](#quickstart) | [explainer video](#explainer-video) | [citing _jDAS_](#citing-jdas)
-
+Contents: [overview](#overview) | [example](#example) | [quickstart](#quickstart) | [5-minute explainer video](#explainer-video) | [citing _jDAS_](#citing-jdas)
+    
 --------------
 
 ## Overview
@@ -14,9 +14,10 @@ _jDAS_ is a self-supervised Deep Learning model for denoising of Distributed Aco
 
 Retraining the model on new data is quick and easy, and will produce an optimal separation between coherent signals and incoherent noise for your specific dataset:
 ```
-import JDAS
-data_loader = JDAS.DataLoader(data)
-model = JDAS.loadmodel("models/pretrained.h5")
+from jDAS import JDAS
+jdas = JDAS()
+data_loader = jdas.init_dataloader(data)
+model = jdas.load_model()
 model.fit(data_loader, epochs=50)
 ```
 Denoising your data is then done through a single function call:
@@ -25,7 +26,7 @@ clean_data = JDAS.denoise(data)
 ```
 That's all!
 
-For a more detailed description of the methods, see the (documentation)[https://jdas.readthedocs.io/].
+For a more detailed description of the methods, see the (documentation)[https://jdas.readthedocs.io/]. In-depth examples on *jDAS* denoising and retraining are provided in the `examples` directory.
 
 --------------
 
