@@ -26,7 +26,7 @@ clean_data = JDAS.denoise(data)
 ```
 That's all!
 
-For a more detailed description of the methods, see the (documentation)[https://jdas.readthedocs.io/]. In-depth examples on *jDAS* denoising and retraining are provided in the `examples` directory.
+For a more detailed description of the methods, see the [documentation](https://jdas.readthedocs.io/). In-depth examples on *jDAS* denoising and retraining are provided in the `examples` directory.
 
 --------------
 
