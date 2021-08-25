@@ -1,6 +1,10 @@
-![jDAS logo](docs/source/img/J-invariant_logo.svg)
+<p align="center">
+    <img src="docs/source/img/J-invariant_logo.svg" alt="jDAS logo" />
+</p>
 
-# _jDAS_: Deep Learning denoising of DAS data
+<p align="center">
+    <h1>Deep Learning denoising of DAS data</h1>
+</p>
 
 [![Documentation Status](https://readthedocs.org/projects/jdas/badge/?version=latest)](https://jdas.readthedocs.io/en/latest/?badge=latest)
 
