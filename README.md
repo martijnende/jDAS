@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="docs/source/img/J-invariant_logo.svg" alt="jDAS logo" height="200" />
+    <img src="docs/source/img/jDAS_logo.svg" alt="jDAS logo" height="200" />
 </p>
 
 # Deep Learning denoising of DAS data

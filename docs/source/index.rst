@@ -3,8 +3,11 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-*jDAS* documentation
-====================
+.. image:: img/jDAS_logo.svg
+    :height: 200
+    :align: center
+
+|
 
 *jDAS* in a nutshell
 --------------------
