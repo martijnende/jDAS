@@ -1,3 +1,5 @@
+![jDAS logo](docs/source/img/J-invariant_logo.svg)
+
 # _jDAS_: Deep Learning denoising of DAS data
 
 [![Documentation Status](https://readthedocs.org/projects/jdas/badge/?version=latest)](https://jdas.readthedocs.io/en/latest/?badge=latest)
@@ -34,7 +36,9 @@ For a more detailed description of the methods, see the [documentation](https://
 
 The example below is taken from a submarine DAS experiment conducted offshore Greece. At around 25 seconds and earthquake hits the DAS cable and induces a spatio-temporally coherent strain field. _jDAS_ removes the incoherent background noise while keeping the earthquake signals.
 
-<div style="text-align:center"><img src="docs/source/img/jDAS_example.jpg" alt="Example of jDAS denoising performance" /></div>
+<p align="center">
+    <img src="docs/source/img/jDAS_example.jpg" alt="Example of jDAS denoising performance" />
+</p>
 
 Note that some aliasing artifacts have been introduced in rendering this static JPEG. A code example to reproduce this figure is included in the `examples` directory of the project.
 
@@ -67,7 +71,11 @@ Please open a ticket under the tab "Issues" on the GitHub repository if you have
 
 ## Explainer video
 
-<div style="text-align:center"><a href="https://youtu.be/9NNElFOIzK8"><img src="docs/source/img/jDAS_youtube.png" alt="Example of jDAS denoising performance" /></a></div>
+<p align="center">
+    <a href="https://youtu.be/9NNElFOIzK8">
+        <img src="docs/source/img/jDAS_youtube.png" alt="Example of jDAS denoising performance" />
+    </a>
+</p>
 
 --------------
 
