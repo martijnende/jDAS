@@ -3,10 +3,14 @@
 </p>
 
 <p align="center">
-    <h1 style="text-align: center;">Deep Learning denoising of DAS data</h1>
+    <center><h1>Deep Learning denoising of DAS data</h1></center>
 </p>
 
-[![Documentation Status](https://readthedocs.org/projects/jdas/badge/?version=latest)](https://jdas.readthedocs.io/en/latest/?badge=latest)
+<p align="center">
+    <a href="https://jdas.readthedocs.io/en/latest/?badge=latest">
+        <img src="https://readthedocs.org/projects/jdas/badge/?version=latest" alt="Documentation Status" />
+    </a>
+</p>
 
 --------------
 
