@@ -2,15 +2,9 @@
     <img src="docs/source/img/J-invariant_logo.svg" alt="jDAS logo" height="200" />
 </p>
 
-<p align="center">
-    <center><h1>Deep Learning denoising of DAS data</h1></center>
-</p>
+# Deep Learning denoising of DAS data
 
-<p align="center">
-    <a href="https://jdas.readthedocs.io/en/latest/?badge=latest">
-        <img src="https://readthedocs.org/projects/jdas/badge/?version=latest" alt="Documentation Status" />
-    </a>
-</p>
+[![Documentation Status](https://readthedocs.org/projects/jdas/badge/?version=latest)](https://jdas.readthedocs.io/en/latest/?badge=latest)
 
 --------------
 
