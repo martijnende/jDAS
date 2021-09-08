@@ -83,7 +83,7 @@ Please open a ticket under the tab "Issues" on the GitHub repository if you have
 
 ## Citing _jDAS_
 
-For use of _jDAS_ in scientific applications, please consider citing the following peer-reviewed publication:
+For use of _jDAS_ in scientific applications, please consider citing the following publication:
 
 ```
 @article{vandenEnde2021,
