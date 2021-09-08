@@ -1,0 +1,5 @@
+h5py
+matplotlib
+numpy
+scipy
+tensorflow-gpu>=2.2.0
