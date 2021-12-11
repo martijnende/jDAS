@@ -147,7 +147,7 @@ class JDAS:
             recs_all = np.zeros((Nch, Nsamples * Nt))
             
             # Output time steps
-            n_out = np.arange(0, Nsamples, Nsamples // 10)
+            n_out = np.arange(0, Nsamples, max(Nsamples // 10, 1))
             
             # Loop over chunks
             for n in range(Nsamples):
