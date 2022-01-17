@@ -29,6 +29,8 @@ class DataLoader(keras.utils.Sequence):
         self.Nx = X.shape[1]
         # Number of time sampling points
         self.Nt = X.shape[2]
+        # Number of time sampling points for an input sample (fixed by architecture)
+        self.win = 2048
         # Number of stations per batch sample
         self.N_sub = 11
         # Starting indices of the slices
@@ -64,7 +66,7 @@ class DataLoader(keras.utils.Sequence):
         N_batch = self.__len__()
         N_total = N_batch * self.batch_size
         # Buffer for mini-batches
-        samples = np.zeros((N_total, self.N_sub, self.Nt))
+        samples = np.zeros((N_total, self.N_sub, self.win))
         # Buffer for masks
         masks = np.ones_like(samples)
         
@@ -78,6 +80,9 @@ class DataLoader(keras.utils.Sequence):
         for s, sample in enumerate(self.X):
             # Random selection of station indices
             selection = rng.choice(self.station_inds, size=n_mini, replace=False)
+            # Random time slice
+            t_start = rng.integers(low=0, high=self.Nt-self.win)
+            t_slice = slice(t_start, t_start + self.win)
             # Time reversal
             order = rng.integers(low=0, high=2) * 2 - 1
             sign = rng.integers(low=0, high=2) * 2 - 1
@@ -85,7 +90,7 @@ class DataLoader(keras.utils.Sequence):
             for k, station in enumerate(selection):
                 # Selection of stations
                 station_slice = slice(station, station + self.N_sub)
-                subsample = sign * sample[station_slice, ::order]
+                subsample = sign * sample[station_slice, t_slice][:, ::order]
                 # Get random index of this batch sample
                 batch_ind = batch_inds[s * n_mini + k]
                 # Store waveforms
@@ -95,40 +100,7 @@ class DataLoader(keras.utils.Sequence):
                 # Create mask
                 masks[batch_ind, blank_ind] = 0
                 
-            
         self.samples = samples
         self.masks = masks
         self.masked_samples = samples * (1 - masks)
         pass
-
-    def generate_masks(self, samples):
-        """ Generate masks and masked samples """
-        N_masks = self.N_masks
-        N_patch = self.N_patch
-        Ny = samples.shape[2]
-        patch_inds = self.patch_inds
-        patch_radius = self.patch_radius
-        # Tile samples
-        samples = np.tile(samples, [N_masks, 1, 1])
-        # Add extra dimension
-        samples = np.expand_dims(samples, -1)
-        # Shuffle samples
-        inds = np.arange(samples.shape[0])
-        np.random.shuffle(inds)
-        samples = samples[inds]
-        # Generate complementary masks (patch = 1)
-        c_masks = np.zeros_like(samples)
-        for n in range(c_masks.shape[0]):
-            selection = rng.choice(patch_inds, size=N_patch, replace=False)
-            for sel in selection:
-                i = sel // Ny
-                j = sel % Ny
-                slice_x = slice(i - patch_radius[0], i + patch_radius[0])
-                slice_y = slice(j - patch_radius[1], j + patch_radius[1])
-                c_masks[n, slice_x, slice_y] = 1
-        # Masks (patch = 0)
-        masks = 1 - c_masks
-        # Masked samples (for loss function)
-        masked_samples = c_masks * samples
-        return samples, masked_samples, masks
-
