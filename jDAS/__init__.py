@@ -2,6 +2,7 @@ import sys
 import os
 import keras
 import numpy as np
+import gc
 
 from .filters import taper_filter
 from .dataloader import DataLoader
@@ -85,6 +86,7 @@ class JDAS:
 
         result = model.predict((eval_samples, masks))
         rec = np.sum(result, axis=1)[:, :, 0]
+        _ = gc.collect()
 
         return rec
 
