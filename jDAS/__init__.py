@@ -1,6 +1,7 @@
 import sys
 import os
-import keras
+os.environ.setdefault("TF_USE_LEGACY_KERAS", "1")
+import tensorflow as tf
 import numpy as np
 import gc
 
@@ -32,7 +33,7 @@ class JDAS:
         if model_path is None:
             model_path = os.path.join(cwd, "..", "models", "pretrained_model.h5")
             
-        self.model = keras.models.load_model(model_path)
+        self.model = tf.keras.models.load_model(model_path, compile=False)
         return self.model
     
     

@@ -1,4 +1,9 @@
-from scipy.signal import tukey, butter, filtfilt, sosfiltfilt
+from scipy.signal import butter, filtfilt, sosfiltfilt
+try:
+    # SciPy >= 1.12 keeps window functions under scipy.signal.windows
+    from scipy.signal.windows import tukey
+except ImportError:  # pragma: no cover - fallback for older SciPy
+    from scipy.signal import tukey
 import scipy.fft  # Scipy's FFT package is faster than Numpy's
 
 
